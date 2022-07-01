@@ -13,6 +13,7 @@ namespace EpicGameJam
 
 		private Vector2 input;
 		private Rigidbody2D rb;
+		private bool hasMouse;
 
 		private Vector2 Input
 		{
@@ -28,13 +29,27 @@ namespace EpicGameJam
 		[UsedImplicitly]
 		private void OnMove(InputValue value)
 		{
-			//Get the directional value
 			Input = value.Get<Vector2>();
+		}
+
+		[UsedImplicitly]
+		private void OnControlsChanged(PlayerInput playerInput)
+		{
+			hasMouse = (playerInput.currentControlScheme == "KeyboardMouse");
 		}
 
 		private void FixedUpdate()
 		{
+			ChangeLookDirection();
 			ApplyMovement();
+		}
+
+		private void ChangeLookDirection()
+		{
+			if (hasMouse)
+			{
+				cam.
+			}
 		}
 
 		private void ApplyMovement()
