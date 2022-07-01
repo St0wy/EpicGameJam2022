@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.stowy.tools": {
+      "version": "https://github.com/St0wy/Stowy-Unity-Tools.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "ffeb3b1985092f5c80ab7e3982da0d7c5247ce2c"
+    },
     "com.unity.2d.animation": {
       "version": "7.0.6",
       "depth": 1,
