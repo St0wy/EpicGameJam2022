@@ -1,4 +1,5 @@
 ﻿using JetBrains.Annotations;
+using StowyTools.Logger;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,19 +12,22 @@ namespace EpicGameJam
 		[Header("Parameters")]
 		[SerializeField] private float speed = 5.0f;
 
-		private Vector2 input;
-		private Rigidbody2D rb;
-		private bool hasMouse;
+		private Vector2 _input;
+		private Vector2 _lookDir;
+		private Rigidbody2D _rb;
+		private bool _hasMouse;
 
 		private Vector2 Input
 		{
-			get => input;
-			set => input = value.normalized;
+			get => _input;
+			set => _input = value.normalized;
 		}
 
 		private void Awake()
 		{
-			rb = GetComponent<Rigidbody2D>();
+			_rb = GetComponent<Rigidbody2D>();
+			if (cam == null)
+				cam = Camera.main;
 		}
 
 		[UsedImplicitly]
@@ -33,9 +37,16 @@ namespace EpicGameJam
 		}
 
 		[UsedImplicitly]
+		private void OnLook(InputValue value)
+		{
+			_lookDir = value.Get<Vector2>().normalized;
+		}
+
+		[UsedImplicitly]
 		private void OnControlsChanged(PlayerInput playerInput)
 		{
-			hasMouse = (playerInput.currentControlScheme == "KeyboardMouse");
+			this.Log(playerInput.currentControlScheme);
+			_hasMouse = (playerInput.currentControlScheme == "Keyboard&Mouse");
 		}
 
 		private void FixedUpdate()
@@ -46,16 +57,26 @@ namespace EpicGameJam
 
 		private void ChangeLookDirection()
 		{
-			if (hasMouse)
+			if (_hasMouse)
 			{
+<<<<<<< HEAD
+				Vector3 mousePos = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+				Vector2 playerMouse = mousePos - transform.position;
+				_lookDir = playerMouse.normalized;
+=======
 				
+>>>>>>> 980a08becb176ea0df29a59fe9eada435aa3d382
 			}
+
+			// float angle = Mathf.Atan2(.y, lookDir.x);
+			// transform.rotation = Quaternion.LookRotation(lookDir);
+			transform.up = _lookDir;
 		}
 
 		private void ApplyMovement()
 		{
 			Vector2 vel = Input * speed;
-			rb.velocity = vel;
+			_rb.velocity = vel;
 		}
 	}
 }
