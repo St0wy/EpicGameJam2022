@@ -12,7 +12,7 @@ namespace EpicGameJam
         private float _life = 10.0f;
 
         [FormerlySerializedAs("speed_")] [SerializeField]
-        private float _speed = 2;
+        private float _speed = 2.0f;
         
         [FormerlySerializedAs("bodyPeon_")] [FormerlySerializedAs("playerRigidbody2d_")] [SerializeField]
         private Rigidbody2D _bodyPeon;

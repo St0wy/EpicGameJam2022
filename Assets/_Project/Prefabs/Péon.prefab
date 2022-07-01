@@ -72,7 +72,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &3028340682810576359
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -163,8 +163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc942422557ca1943bc7e8d24df3c5b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life_: 10
-  speed_: {x: 2, y: 2, z: 2}
-  bodyPeon_: {fileID: 0}
-  peonTransform_: {fileID: 0}
-  bodyPlayer_: {fileID: 0}
+  _life: 10
+  _speed: 2
+  _bodyPeon: {fileID: 0}
+  _bodyPlayer: {fileID: 0}
+  distanceToActivate: 10
+  playerTrans: {fileID: 0}
