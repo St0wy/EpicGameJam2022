@@ -59,13 +59,9 @@ namespace EpicGameJam
 		{
 			if (_hasMouse)
 			{
-<<<<<<< HEAD
-				Vector3 mousePos = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+			 	Vector3 mousePos = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 				Vector2 playerMouse = mousePos - transform.position;
 				_lookDir = playerMouse.normalized;
-=======
-				
->>>>>>> 980a08becb176ea0df29a59fe9eada435aa3d382
 			}
 
 			// float angle = Mathf.Atan2(.y, lookDir.x);
