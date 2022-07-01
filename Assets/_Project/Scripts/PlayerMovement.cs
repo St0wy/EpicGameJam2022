@@ -1,5 +1,4 @@
-﻿using System;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,9 +7,9 @@ namespace EpicGameJam
 	[RequireComponent(typeof(Rigidbody2D))]
 	public class PlayerMovement : MonoBehaviour
 	{
+		[SerializeField] private Camera cam;
 		[Header("Parameters")]
-		[SerializeField]
-		private float speed = 5.0f;
+		[SerializeField] private float speed = 5.0f;
 
 		private Vector2 input;
 		private Rigidbody2D rb;
