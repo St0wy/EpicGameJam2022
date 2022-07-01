@@ -11,6 +11,7 @@
             <e p="Camera.cs" t="Include" />
             <e p="Health.cs" t="Include" />
             <e p="PeonScript.cs" t="Include" />
+            <e p="PlayerMovement.cs" t="Include" />
           </e>
         </e>
       </e>

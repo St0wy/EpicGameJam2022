@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 7010380461985949335}
   - component: {fileID: 3028340682810576359}
   - component: {fileID: 649181746504325583}
+  - component: {fileID: 3243615797183640466}
   m_Layer: 0
   m_Name: "P\xE9on"
-  m_TagString: Untagged
+  m_TagString: Peon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,7 +139,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.10074131, g: 0.06454251, b: 0.9245283, a: 1}
   m_FlipX: 0
@@ -150,3 +151,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3243615797183640466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4331149886504611821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc942422557ca1943bc7e8d24df3c5b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life_: 10
+  speed_: 2
+  playerRigidbody2d_: {fileID: 0}
