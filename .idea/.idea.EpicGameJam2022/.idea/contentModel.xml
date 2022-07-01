@@ -8,8 +8,9 @@
       <e p="Assets" t="Include">
         <e p="_Project" t="Include">
           <e p="Scripts" t="Include">
-            <e p="Camera.cs" t="Include" />
+            <e p="CameraFollow.cs" t="Include" />
             <e p="Health.cs" t="Include" />
+            <e p="HealthPotion.cs" t="Include" />
             <e p="PeonScript.cs" t="Include" />
             <e p="PlayerMovement.cs" t="Include" />
           </e>

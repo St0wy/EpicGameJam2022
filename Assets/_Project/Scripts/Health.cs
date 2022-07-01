@@ -6,10 +6,10 @@ namespace EpicGameJam
 {
 	public class Health : MonoBehaviour
 	{
+		public static Health health_;
 		public delegate void HurtCallback(int healthPoints);
 
 		[SerializeField] private int maxHealthPoints = 10;
-		[SerializeField] private int potionHeal = 2;
 		[SerializeField] private bool destroyWhenKilled = true;
 		[SerializeField] private float destroyTime;
 		

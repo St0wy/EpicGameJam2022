@@ -27,7 +27,7 @@ namespace EpicGameJam
         private void Update()
         {
             Vector2 peonToTarget = playerTrans.position - transform.position;
-
+            
             if (!(peonToTarget.magnitude < distanceToActivate)) return;
             
             var movementVec = peonToTarget.normalized * _speed;
