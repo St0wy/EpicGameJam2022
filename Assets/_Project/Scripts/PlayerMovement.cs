@@ -15,7 +15,9 @@ namespace EpicGameJam
 		private Vector2 _input;
 		private Vector2 _lookDir;
 		private Rigidbody2D _rb;
-		private bool _hasMouse;
+
+		private bool _isUsingMouse;
+		private bool _isUsingRStick;
 
 		private Vector2 Input
 		{
@@ -39,14 +41,18 @@ namespace EpicGameJam
 		[UsedImplicitly]
 		private void OnLook(InputValue value)
 		{
-			_lookDir = value.Get<Vector2>().normalized;
+			var val = value.Get<Vector2>();
+			if (!Mathf.Approximately(val.x, 0) || !Mathf.Approximately(val.y, 0))
+			{
+				_lookDir = val.normalized;
+			}
 		}
 
 		[UsedImplicitly]
 		private void OnControlsChanged(PlayerInput playerInput)
 		{
 			this.Log(playerInput.currentControlScheme);
-			_hasMouse = (playerInput.currentControlScheme == "Keyboard&Mouse");
+			_isUsingMouse = (playerInput.currentControlScheme == "Keyboard&Mouse");
 		}
 
 		private void FixedUpdate()
@@ -57,7 +63,7 @@ namespace EpicGameJam
 
 		private void ChangeLookDirection()
 		{
-			if (_hasMouse)
+			if (_isUsingMouse)
 			{
 			 	Vector3 mousePos = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
