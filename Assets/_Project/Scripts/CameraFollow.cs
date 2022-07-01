@@ -8,15 +8,15 @@ namespace EpicGameJam
 	public class CameraFollow : MonoBehaviour
 	{
 		[FormerlySerializedAs("player")] [SerializeField]
-		private Transform target;
-		[SerializeField] private float smoothing;
-		[SerializeField] private Vector3 offset;
+		private Transform _target;
+		[SerializeField] private float _smoothing;
+		[SerializeField] private Vector3 _offset;
 
 		private void Update()
 		{
-			if (target == null) return;
+			if (_target == null) return;
 
-			Vector3 newPosition = Vector3.Lerp(transform.position, target.transform.position + offset, smoothing);
+			Vector3 newPosition = Vector3.Lerp(transform.position, _target.transform.position + _offset, _smoothing);
 			transform.position = newPosition;
 		}
 	}
