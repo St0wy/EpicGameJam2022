@@ -48,7 +48,7 @@ namespace EpicGameJam
 		{
 			if (hasMouse)
 			{
-				cam.
+				
 			}
 		}
 
