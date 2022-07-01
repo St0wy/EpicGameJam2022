@@ -18,25 +18,12 @@ namespace EpicGameJam
 		
 		[SerializeField] private float destroyTime;
 
-		[Tooltip("Field indicating whether the object has invulnerability frames after getting hit.")]
-		[SerializeField] private bool hasIFrames;
-
-	
-		[Tooltip("The duration of the invulnerability.")]
-		[SerializeField] private float iFramesDuration = 0.5f;
-
-		
-		[SerializeField] private float iFrameTimer;
-
-		
 
 		public HurtCallback OnHurt { get; set; }
 		public bool IsAlive { get; private set; }
 		public int HealthPoints { get; private set; }
 		
-		public bool isHealed { get; private set; }
-		public bool IsInIFrame => hasIFrames && iFrameTimer > 0;
-
+		
 		private void Awake()
 		{
 			HealthPoints = maxHealthPoints;
@@ -45,22 +32,9 @@ namespace EpicGameJam
 
 		private void Update()
 		{
-			// Check if IFrames are enabled
-			if (!hasIFrames) return;
 			
-			// Update the timer if we are in an IFrame
-			if (IsInIFrame)
-			{
-				iFrameTimer -= Time.deltaTime;
-			}
-
-			if (isHealed)
-			{
-				HealCharacter(potionHeal);
-			}
 		}
-
-	
+		
 		public void HealCharacter(int heal)
 		{
 			
