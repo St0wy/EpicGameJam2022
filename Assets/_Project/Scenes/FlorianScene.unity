@@ -123,19 +123,14 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!50 &732465977 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 7010380461985949335, guid: d57e5380672b093498739ed66bf155e8, type: 3}
-  m_PrefabInstance: {fileID: 1704539736}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &732465979 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 216264552434382699, guid: d57e5380672b093498739ed66bf155e8, type: 3}
-  m_PrefabInstance: {fileID: 1704539736}
-  m_PrefabAsset: {fileID: 0}
 --- !u!50 &1327659244 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 1822368385227058224, guid: 96b76e768f4f1e0489037a53dee4d2c7, type: 3}
+  m_PrefabInstance: {fileID: 1684299711}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1327659247 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1822368385227058222, guid: 96b76e768f4f1e0489037a53dee4d2c7, type: 3}
   m_PrefabInstance: {fileID: 1684299711}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1410436329
@@ -364,42 +359,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3028340682810576359, guid: d57e5380672b093498739ed66bf155e8, type: 3}
-      propertyPath: m_Size.x
-      value: 2.0558853
-      objectReference: {fileID: 0}
-    - target: {fileID: 3028340682810576359, guid: d57e5380672b093498739ed66bf155e8, type: 3}
-      propertyPath: m_Size.y
-      value: 1.5572731
-      objectReference: {fileID: 0}
-    - target: {fileID: 3028340682810576359, guid: d57e5380672b093498739ed66bf155e8, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.08798933
-      objectReference: {fileID: 0}
-    - target: {fileID: 3028340682810576359, guid: d57e5380672b093498739ed66bf155e8, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.08799052
-      objectReference: {fileID: 0}
-    - target: {fileID: 3243615797183640466, guid: d57e5380672b093498739ed66bf155e8, type: 3}
-      propertyPath: _bodyPeon
-      value: 
-      objectReference: {fileID: 732465977}
-    - target: {fileID: 3243615797183640466, guid: d57e5380672b093498739ed66bf155e8, type: 3}
-      propertyPath: bodyPeon_
-      value: 
-      objectReference: {fileID: 732465977}
     - target: {fileID: 3243615797183640466, guid: d57e5380672b093498739ed66bf155e8, type: 3}
       propertyPath: _bodyPlayer
       value: 
       objectReference: {fileID: 1327659244}
     - target: {fileID: 3243615797183640466, guid: d57e5380672b093498739ed66bf155e8, type: 3}
-      propertyPath: _peonTransform
+      propertyPath: playerTrans
       value: 
-      objectReference: {fileID: 732465979}
-    - target: {fileID: 3243615797183640466, guid: d57e5380672b093498739ed66bf155e8, type: 3}
-      propertyPath: peonTransform_
-      value: 
-      objectReference: {fileID: 732465979}
+      objectReference: {fileID: 1327659247}
     - target: {fileID: 4331149886504611821, guid: d57e5380672b093498739ed66bf155e8, type: 3}
       propertyPath: m_Name
       value: "P\xE9on"

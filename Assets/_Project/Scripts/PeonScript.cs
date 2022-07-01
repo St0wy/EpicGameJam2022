@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using TreeEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.TextCore;
 
 namespace EpicGameJam
 {
@@ -16,23 +19,21 @@ namespace EpicGameJam
         
         [FormerlySerializedAs("bodyPeon_")] [FormerlySerializedAs("playerRigidbody2d_")] [SerializeField]
         private Rigidbody2D _bodyPeon;
-
-        [FormerlySerializedAs("bodyPlayer_")] [SerializeField]
-        private Rigidbody2D _bodyPlayer;
-
-        [SerializeField] private float distanceToActivate = 10;
+        
+        [SerializeField] private float distanceToActivate = 1.0f;
         [SerializeField] private Transform playerTrans;
         private Vector2 movement_;
-
+        private bool followPlayer = false;
+        
         private void Update()
         {
             Vector2 peonToTarget = playerTrans.position - transform.position;
-            
+
             if (!(peonToTarget.magnitude < distanceToActivate)) return;
             
             var movementVec = peonToTarget.normalized * _speed;
-            transform.Translate(movementVec);
-            // TODO: replace translate by RigidBody
+            _bodyPeon.velocity = movementVec;
+            followPlayer = true;
         }
     }
 }
