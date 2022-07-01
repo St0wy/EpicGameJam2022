@@ -9,29 +9,29 @@ namespace EpicGameJam
 		public static Health health_;
 		public delegate void HurtCallback(int healthPoints);
 
-		[SerializeField] private int maxHealthPoints = 10;
-		[SerializeField] private bool destroyWhenKilled = true;
-		[SerializeField] private float destroyTime;
+		[SerializeField] private int _maxHealthPoints = 10;
+		[SerializeField] private bool _destroyWhenKilled = true;
+		[SerializeField] private float _destroyTime;
 		
-		private int healthPoints;
+		private int _healthPoints;
 
 		public HurtCallback OnHurt { get; set; }
 		public bool IsAlive { get; private set; }
 
 		public int HealthPoints
 		{
-			get => healthPoints;
+			get => _healthPoints;
 			private set
 			{
-				healthPoints = value;
-				if (healthPoints > maxHealthPoints)
-					healthPoints = maxHealthPoints;
+				_healthPoints = value;
+				if (_healthPoints > _maxHealthPoints)
+					_healthPoints = _maxHealthPoints;
 			}
 		}
 
 		private void Awake()
 		{
-			HealthPoints = maxHealthPoints;
+			HealthPoints = _maxHealthPoints;
 			IsAlive = true;
 		}
 
@@ -51,9 +51,9 @@ namespace EpicGameJam
 
 			OnHurt?.Invoke(HealthPoints);
 
-			if (!IsAlive && destroyWhenKilled)
+			if (!IsAlive && _destroyWhenKilled)
 			{
-				Destroy(gameObject, destroyTime);
+				Destroy(gameObject, _destroyTime);
 			}
 		}
 	}
