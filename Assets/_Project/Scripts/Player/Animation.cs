@@ -54,7 +54,7 @@ namespace EpicGameJam
             _playerTransform.transform.localScale = newScale;
             _isFacingRight = !_isFacingRight;
         }
-
+        
         private void ChangeState(State state)
         {
             switch (state)
