@@ -18,6 +18,7 @@ namespace EpicGameJam
 		[FormerlySerializedAs("_speed")] [FormerlySerializedAs("speed_")] [SerializeField]
 		private float speed = 2.0f;
 
+		[SerializeField] private Vector2 _velocity;
 		[FormerlySerializedAs("playerTrans")] [SerializeField]
 		private Transform playerTransform;
 		[SerializeField] private float distanceToActivate = 10f;
@@ -30,6 +31,7 @@ namespace EpicGameJam
 		//rigibody
 		private Rigidbody2D _rb;
 		private float _attackTimer;
+		
 		//state
 		private PeonState _state;
 
@@ -45,27 +47,26 @@ namespace EpicGameJam
 		{
 			if (_state is PeonState.Attacking or PeonState.ChargingAttack)
 			{
+				_velocity = Vector2.zero;
 				HandleAttack();
 				_isFollowing = false;
 			}
-			else
-			{
+			
 				Vector2 peonToTarget = playerTransform.position - transform.position;
 				float distance = peonToTarget.magnitude;
-
-				if (!(distance < distanceToActivate)) return;
-
+				
 				MoveToTarget(peonToTarget);
-
+				_velocity = Vector2.zero;
+				
 				if (!(distance < distanceToAttack)) return;
 				_state = PeonState.ChargingAttack;
-			}
+			
 		}
 
 		private void MoveToTarget(Vector2 dir)
 		{
-			Vector2 vel = dir.normalized * speed;
-			_rb.velocity = vel;
+			 _velocity = dir.normalized * speed;
+			_rb.velocity = _velocity;
 			_isFollowing = true;
 		}
 
