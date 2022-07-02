@@ -42,10 +42,9 @@ namespace EpicGameJam.Player
 			}
 		}
 
-		public float Attack()
+		public float Attack(float angle)
 		{
-			float angle = transform.rotation.z;
-			// swordRotationPoint.rotation = Quaternion.Euler(0, 0, angle);
+			swordRotationPoint.rotation = Quaternion.Euler(0, 0, angle);
 
 			// Enable hit box and sword game object
 			swordAnimator.gameObject.SetActive(true);
