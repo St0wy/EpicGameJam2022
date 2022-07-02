@@ -6,16 +6,18 @@ namespace EpicGameJam
 {
 	public class Health : MonoBehaviour
 	{
-		public static Health health_;
-		public delegate void HurtCallback(int healthPoints);
+		public delegate void DeathCallback();
+
+		public delegate void HurtCallback(int damage);
 
 		[SerializeField] private int _maxHealthPoints = 10;
 		[SerializeField] private bool _destroyWhenKilled = true;
 		[SerializeField] private float _destroyTime;
-		
+
 		private int _healthPoints;
 
 		public HurtCallback OnHurt { get; set; }
+		public DeathCallback OnDeath { get; set; }
 		public bool IsAlive { get; private set; }
 
 		public int HealthPoints
@@ -44,12 +46,12 @@ namespace EpicGameJam
 		{
 			HealthPoints -= amount;
 
+			OnHurt?.Invoke(amount);
 			if (HealthPoints <= 0)
 			{
 				IsAlive = false;
+				OnDeath?.Invoke();
 			}
-
-			OnHurt?.Invoke(HealthPoints);
 
 			if (!IsAlive && _destroyWhenKilled)
 			{
