@@ -31,6 +31,7 @@ namespace EpicGameJam.Player
 		private Vector2 _dashDirection;
 
 		public MovementState MovementState { get; private set; }
+		
 
 		private Vector2 Input
 		{
