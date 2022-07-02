@@ -16,8 +16,12 @@ namespace EpicGameJam
 		private Vector2 _lookDir;
 		private Rigidbody2D _rb;
 
+		[SerializeField]
 		private bool _isUsingMouse;
+		[SerializeField]
 		private bool _isUsingRStick;
+		[SerializeField]
+		private bool _isMoving;
 
 		private Vector2 Input
 		{
@@ -35,23 +39,30 @@ namespace EpicGameJam
 		[UsedImplicitly]
 		private void OnMove(InputValue value)
 		{
-			Input = value.Get<Vector2>();
+			var val = value.Get<Vector2>();
+			Input = val;
+
+			_isMoving = !Input.IsApproxZero();
 		}
 
 		[UsedImplicitly]
 		private void OnLook(InputValue value)
 		{
 			var val = value.Get<Vector2>();
-			if (Mathf.Approximately(val.x, 0) && Mathf.Approximately(val.y, 0)) return;
-
-			_lookDir = val.normalized;
-			_isUsingRStick = true;
+			if (val.IsApproxZero())
+			{
+				_isUsingRStick = false;
+			}
+			else
+			{
+				_lookDir = val.normalized;
+				_isUsingRStick = true;
+			}
 		}
 
 		[UsedImplicitly]
 		private void OnControlsChanged(PlayerInput playerInput)
 		{
-			this.Log(playerInput.currentControlScheme);
 			_isUsingMouse = (playerInput.currentControlScheme == "Keyboard&Mouse");
 		}
 
@@ -70,13 +81,13 @@ namespace EpicGameJam
 				Vector2 playerMouse = mousePos - transform.position;
 				_lookDir = playerMouse.normalized;
 			}
-
-			if (!_isUsingRStick)
+			else if (!_isUsingRStick && _isMoving)
 			{
-				
+				_lookDir = _rb.velocity.normalized;
 			}
 
-			transform.up = _lookDir;
+			if (!_lookDir.IsApproxZero())
+				transform.up = _lookDir;
 		}
 
 		private void ApplyMovement()
