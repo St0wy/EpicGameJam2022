@@ -10,6 +10,7 @@ namespace EpicGameJam.Player
          private Animator _animator;
          private PlayerMovement _pm;
          private bool _isFacingRight = false;
+         private float _deadZone = 0.5f;
          
         // Start is called before the first frame update
         public void Awake()
@@ -19,13 +20,22 @@ namespace EpicGameJam.Player
         }
 
         private void FixedUpdate()
-        { 
+        {
+            
             switch (_pm.MovementState)
             {
                 case MovementState.Idle:
+                    if (Mathf.Abs(Direction.Right) > _deadZone && _isFacingRight)
+                    {
+                        _animator.Play("WalkRight");
+                    }
                     //todo implement white player moovement
                     break;
                 case MovementState.Walk:
+                    if (Mathf.Abs(Direction.Left) > _deadZone && _isFacingRight)
+                    {
+                        _animator.Play("IdleAnim");
+                    }
                 //todo implement white player moovement
                 break;
             }
