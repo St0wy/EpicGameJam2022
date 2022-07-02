@@ -148,7 +148,7 @@ namespace EpicGameJam.Player
 
 			if (_lookDir.IsApproxZero()) return;
 
-			transform.up = _lookDir;
+			//transform.up = _lookDir;
 
 			if (Mathf.Abs(_lookDir.x) > Mathf.Abs(_lookDir.y))
 			{
