@@ -13,7 +13,6 @@ namespace EpicGameJam
 		private void Update()
 		{
 			if (_target == null) return;
-
 			Vector3 newPosition = Vector3.Lerp(transform.position, _target.transform.position + _offset, _smoothing);
 			transform.position = newPosition;
 		}

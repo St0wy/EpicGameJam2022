@@ -17,10 +17,12 @@ namespace EpicGameJam.Player
 		private bool _isAttacking;
 		private readonly Collider2D[] _colliders = new Collider2D[15];
 		private PlayerMovement _pm;
+		
 
 		private void Awake()
 		{
 			_pm = GetComponent<PlayerMovement>();
+			
 		}
 
 		private void FixedUpdate()
@@ -58,7 +60,28 @@ namespace EpicGameJam.Player
 			swordAnimator.gameObject.SetActive(true);
 			_isAttacking = true;
 
-			swordAnimator.Play(SwordAnimations.Attack);
+			switch (_pm.Direction)
+			{
+				case Direction.Up:
+					swordAnimator.Play(SwordAnimations.AttackUp);
+					
+					break;
+				case Direction.Down:
+					swordAnimator.Play(SwordAnimations.AttackDown);
+					break;
+				case Direction.Left:
+					swordAnimator.Play(SwordAnimations.AttackLeft);
+					break;
+				case Direction.Right:
+					swordAnimator.Play(SwordAnimations.AttackRight);
+					break;
+				default:
+					throw new ArgumentOutOfRangeException();
+			}
+			
+				
+			
+			
 			float attackDuration = swordAnimator.GetCurrentAnimatorStateInfo(0).length;
 
 			StartCoroutine(StopAttackCoroutine(attackDuration));

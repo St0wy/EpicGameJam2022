@@ -22,28 +22,10 @@ namespace EpicGameJam.Player
 		private void Update()
 		{
 			HandleNoAction();
+			
 		}
 		
-		private void HandleMelee()
-		{
-			switch (_playerMovement.Direction)
-			{
-				case Direction.Up:
-					SetAnimationState(PlayerAnimation.AttackUp);
-					break;
-				case Direction.Down:
-					SetAnimationState(PlayerAnimation.AttackDown);
-					break;
-				case Direction.Left:
-					SetAnimationState(PlayerAnimation.AttackLeft);
-					break;
-				case Direction.Right:
-					SetAnimationState(PlayerAnimation.AttackRight);
-					break;
-				default:
-					throw new ArgumentOutOfRangeException();
-			}
-		}
+	
 
 		private void HandleNoAction()
 		{
@@ -55,10 +37,7 @@ namespace EpicGameJam.Player
 				case MovementState.Walk:
 					HandleMovingNoAction();
 					break;
-				case MovementState.Dash:
-					break;
-				case MovementState.DashCooldown:
-					break;
+				
 				default:
 					throw new ArgumentOutOfRangeException();
 			}
