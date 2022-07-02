@@ -1,10 +1,9 @@
 ﻿using System;
 using JetBrains.Annotations;
-using StowyTools.Logger;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace EpicGameJam
+namespace EpicGameJam.Player
 {
 	[RequireComponent(typeof(Rigidbody2D))]
 	public class PlayerMovement : MonoBehaviour
@@ -27,11 +26,11 @@ namespace EpicGameJam
 		private bool _isUsingRStick;
 		private bool _isMoving;
 
-		private bool _isDashing;
-		private bool _isDashCooldown;
 		private float _dashTimer;
 		private float _dashCooldownTimer;
 		private Vector2 _dashDirection;
+
+		public MovementState MovementState { get; private set; }
 
 		private Vector2 Input
 		{
@@ -86,37 +85,40 @@ namespace EpicGameJam
 		[UsedImplicitly]
 		private void OnDash()
 		{
-			if (_isDashing || _isDashCooldown) return;
+			if (MovementState is MovementState.Dash or MovementState.DashCooldown) return;
 
-			_isDashing = true;
+			MovementState = MovementState.Dash;
 			_dashTimer = 0;
 			_dashCooldownTimer = 0;
 			_speedModifier = 0;
-			_isDashCooldown = false;
 			_dashDirection = Input;
 		}
 
 		private void Update()
 		{
-			if (_isDashing)
+			switch (MovementState)
 			{
-				_dashTimer += Time.deltaTime;
-				_speedModifier = dashSpeedModifier;
+				case MovementState.Dash:
+					_dashTimer += Time.deltaTime;
+					_speedModifier = dashSpeedModifier;
 
-				if (!(_dashTimer >= dashDuration)) return;
+					if (!(_dashTimer >= dashDuration)) return;
 
-				_isDashCooldown = true;
-				_isDashing = false;
-			}
-			else if (_isDashCooldown)
-			{
-				_dashCooldownTimer += Time.deltaTime;
-				_speedModifier = 0;
+					MovementState = MovementState.DashCooldown;
+					break;
+				case MovementState.DashCooldown:
+					_dashCooldownTimer += Time.deltaTime;
+					_speedModifier = 0;
 
-				if (!(_dashCooldownTimer >= dashCooldownTime)) return;
+					if (!(_dashCooldownTimer >= dashCooldownTime)) return;
 
-				_speedModifier = 1;
-				_isDashCooldown = false;
+					_speedModifier = 1;
+					MovementState = MovementState.Idle;
+					break;
+				case MovementState.Idle:
+				case MovementState.Walk:
+				default:
+					break;
 			}
 		}
 
@@ -147,7 +149,7 @@ namespace EpicGameJam
 		private void ApplyMovement()
 		{
 			Vector2 input = Input;
-			if (_isDashing)
+			if (MovementState == MovementState.Dash)
 			{
 				input = _dashDirection;
 			}
