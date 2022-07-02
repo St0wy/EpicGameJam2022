@@ -1,6 +1,4 @@
-﻿using System;
-using JetBrains.Annotations;
-using StowyTools.Logger;
+﻿using JetBrains.Annotations;
 using UnityEngine;
 
 namespace EpicGameJam.Player

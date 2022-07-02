@@ -5,6 +5,7 @@ using UnityEngine.Serialization;
 
 namespace EpicGameJam.Player
 {
+	[RequireComponent(typeof(PlayerMovement))]
 	public class SwordBehaviour : MonoBehaviour
 	{
 		[SerializeField] private BoxCollider2D box;
@@ -14,8 +15,13 @@ namespace EpicGameJam.Player
 		[SerializeField] private int damage;
 
 		private bool _isAttacking;
-
 		private readonly Collider2D[] _colliders = new Collider2D[15];
+		private PlayerMovement _pm;
+
+		private void Awake()
+		{
+			_pm = GetComponent<PlayerMovement>();
+		}
 
 		private void FixedUpdate()
 		{
@@ -44,13 +50,13 @@ namespace EpicGameJam.Player
 
 		public float Attack()
 		{
-			float angle = transform.rotation.z;
-			// swordRotationPoint.rotation = Quaternion.Euler(0, 0, angle);
+			float angle = Mathf.Atan2(_pm.LookDir.y, _pm.LookDir.x) * Mathf.Rad2Deg;
+			angle -= 90f;
+			swordRotationPoint.rotation = Quaternion.Euler(0, 0, angle);
 
 			// Enable hit box and sword game object
 			swordAnimator.gameObject.SetActive(true);
 			_isAttacking = true;
-			// swordRotationPoint.transform.rotation = Quaternion.identity;
 
 			swordAnimator.Play(SwordAnimations.Attack);
 			float attackDuration = swordAnimator.GetCurrentAnimatorStateInfo(0).length;
