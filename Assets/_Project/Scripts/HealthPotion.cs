@@ -6,16 +6,20 @@ namespace EpicGameJam
 	{
 		[SerializeField] private int healAmount = 2;
 
-		private void OnTriggerEnter2D(Collider2D other) //health the player
+		private void OnCollisionEnter2D(Collision2D collision)
 		{
-			if (other.name != "Player") return;
-
-			if (other.TryGetComponent(out Health health))
+			
+			if (collision.gameObject.CompareTag("Player"))
 			{
-				health.HealCharacter(healAmount);
+				Health health = collision.gameObject.GetComponent<Health>();
+				if (health)
+				{
+					health.HealCharacter(healAmount);
+					Destroy(gameObject);
+				}
+				
 			}
-
-			Destroy(gameObject);
+			
 		}
 	}
 }

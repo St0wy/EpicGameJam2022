@@ -38,5 +38,7 @@ namespace EpicGameJam
 
 			Destroy(gameObject);
 		}
+		
+		
 	}
 }

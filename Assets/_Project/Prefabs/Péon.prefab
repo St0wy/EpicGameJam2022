@@ -199,5 +199,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71caa9052ab1480448eb4830df0d8b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemToDrop: {fileID: 0}
-  dropChance: 100
+  itemToDrop: {fileID: 1392895335724329992, guid: be784017d0b53d24790cf0b292b7c288, type: 3}
+  dropChance: 30

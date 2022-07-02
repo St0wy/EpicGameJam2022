@@ -76,5 +76,18 @@ namespace EpicGameJam.Player
 			_isAttacking = false;
 			swordAnimator.gameObject.SetActive(false);
 		}
+		
+		private void OnCollisionEnter2D(Collision2D collision)
+		{
+			if (collision.gameObject.CompareTag("Player")) return;
+            
+			Health health = collision.gameObject.GetComponent<Health>();
+			if (health)
+			{
+				health.ReduceHealth(damage);
+			}
+            
+			
+		}
 	}
 }
