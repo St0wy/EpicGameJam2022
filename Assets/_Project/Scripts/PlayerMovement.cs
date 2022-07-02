@@ -42,10 +42,10 @@ namespace EpicGameJam
 		private void OnLook(InputValue value)
 		{
 			var val = value.Get<Vector2>();
-			if (!Mathf.Approximately(val.x, 0) || !Mathf.Approximately(val.y, 0))
-			{
-				_lookDir = val.normalized;
-			}
+			if (Mathf.Approximately(val.x, 0) && Mathf.Approximately(val.y, 0)) return;
+
+			_lookDir = val.normalized;
+			_isUsingRStick = true;
 		}
 
 		[UsedImplicitly]
@@ -69,6 +69,11 @@ namespace EpicGameJam
 
 				Vector2 playerMouse = mousePos - transform.position;
 				_lookDir = playerMouse.normalized;
+			}
+
+			if (!_isUsingRStick)
+			{
+				
 			}
 
 			transform.up = _lookDir;

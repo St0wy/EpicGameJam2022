@@ -29,6 +29,7 @@ namespace EpicGameJam
 
 			Vector2 vel = peonToTarget.normalized * speed;
 			_rb.velocity = vel;
+
 			_followPlayer = true;
 		}
 	}
