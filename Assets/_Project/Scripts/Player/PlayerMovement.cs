@@ -49,6 +49,12 @@ namespace EpicGameJam.Player
 			}
 		}
 
+		public Vector2 LookDir
+		{
+			get => _lookDir;
+			set => _lookDir = value;
+		}
+
 		private void Awake()
 		{
 			_rb = GetComponent<Rigidbody2D>();
