@@ -6,6 +6,7 @@
 		Walk,
 		Dash,
 		DashCooldown,
+		Attacking,
 	}
 	
 }

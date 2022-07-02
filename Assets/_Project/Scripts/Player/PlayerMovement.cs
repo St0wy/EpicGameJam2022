@@ -33,7 +33,7 @@ namespace EpicGameJam.Player
 		private float _dashCooldownTimer;
 		private Vector2 _dashDirection;
 
-		public MovementState MovementState { get; private set; }
+		public MovementState MovementState { get; set; }
 		public Direction Direction { get; private set; }
 
 		private Vector2 Input
@@ -191,6 +191,8 @@ namespace EpicGameJam.Player
 				case MovementState.Walk:
 					MovementState = vel.IsApproxZero() ? MovementState.Idle : MovementState.Walk;
 					break;
+				case MovementState.Attacking:
+					
 				case MovementState.Dash:
 				case MovementState.DashCooldown:
 				default:

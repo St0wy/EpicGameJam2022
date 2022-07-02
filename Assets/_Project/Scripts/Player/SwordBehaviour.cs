@@ -14,7 +14,7 @@ namespace EpicGameJam.Player
 		private Transform swordRotationPoint;
 		[SerializeField] private int damage;
 
-		private bool _isAttacking;
+		public bool _isAttacking = false;
 		private readonly Collider2D[] _colliders = new Collider2D[15];
 		private PlayerMovement _pm;
 		
@@ -29,8 +29,11 @@ namespace EpicGameJam.Player
 		{
 			if (_isAttacking)
 			{
+				
 				HandleAttack();
+				
 			}
+			
 		}
 
 		private void HandleAttack()
@@ -52,6 +55,7 @@ namespace EpicGameJam.Player
 
 		public float Attack()
 		{
+			
 			float angle = Mathf.Atan2(_pm.LookDir.y, _pm.LookDir.x) * Mathf.Rad2Deg;
 			angle -= 90f;
 			swordRotationPoint.rotation = Quaternion.Euler(0, 0, angle);
@@ -59,32 +63,12 @@ namespace EpicGameJam.Player
 			// Enable hit box and sword game object
 			swordAnimator.gameObject.SetActive(true);
 			_isAttacking = true;
-
-			switch (_pm.Direction)
-			{
-				case Direction.Up:
-					swordAnimator.Play(SwordAnimations.AttackUp);
-					
-					break;
-				case Direction.Down:
-					swordAnimator.Play(SwordAnimations.AttackDown);
-					break;
-				case Direction.Left:
-					swordAnimator.Play(SwordAnimations.AttackLeft);
-					break;
-				case Direction.Right:
-					swordAnimator.Play(SwordAnimations.AttackRight);
-					break;
-				default:
-					throw new ArgumentOutOfRangeException();
-			}
+			_pm.MovementState = MovementState.Attacking;
 			
-				
-			
-			
-			float attackDuration = swordAnimator.GetCurrentAnimatorStateInfo(0).length;
+			float attackDuration = swordAnimator.GetCurrentAnimatorStateInfo(1).length;
 
 			StartCoroutine(StopAttackCoroutine(attackDuration));
+			
 			return attackDuration;
 		}
 
@@ -97,9 +81,9 @@ namespace EpicGameJam.Player
 		private void StopAttack()
 		{
 			_isAttacking = false;
-			swordAnimator.gameObject.SetActive(false);
+			_pm.MovementState = MovementState.Dash;
 		}
-		
+
 		private void OnCollisionEnter2D(Collision2D collision)
 		{
 			if (collision.gameObject.CompareTag("Player")) return;
