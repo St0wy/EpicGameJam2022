@@ -30,7 +30,6 @@ namespace EpicGameJam
             Vector2 peonToTarget = playerTrans.position - transform.position;
 
             if (!(peonToTarget.magnitude < distanceToActivate)) return;
-            
             var movementVec = peonToTarget.normalized * _speed;
             _bodyPeon.velocity = movementVec;
             followPlayer = true;
