@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 3028340682810576359}
   - component: {fileID: 649181746504325583}
   - component: {fileID: 3243615797183640466}
+  - component: {fileID: 388641233}
+  - component: {fileID: 388641234}
   m_Layer: 0
   m_Name: "P\xE9on"
   m_TagString: Peon
@@ -83,7 +85,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.08798933, y: -0.08799052}
@@ -163,9 +165,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc942422557ca1943bc7e8d24df3c5b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _life: 10
-  _speed: 2
-  _bodyPeon: {fileID: 7010380461985949335}
-  _bodyPlayer: {fileID: 0}
+  speed: 2
+  _velocity: {x: 0, y: 0}
+  playerTransform: {fileID: 0}
   distanceToActivate: 10
-  playerTrans: {fileID: 0}
+  distanceToAttack: 1.5
+  timeToAttack: 0.5
+  timeToWalkOnPlayer: 0.5
+--- !u!114 &388641233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4331149886504611821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74e196064e85175488b0476284534a38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealthPoints: 4
+  _destroyWhenKilled: 1
+  _destroyTime: 0
+--- !u!114 &388641234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4331149886504611821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71caa9052ab1480448eb4830df0d8b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemToDrop: {fileID: 0}
+  dropChance: 100

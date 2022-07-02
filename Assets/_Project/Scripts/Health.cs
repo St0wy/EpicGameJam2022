@@ -7,7 +7,7 @@ namespace EpicGameJam
 	public class Health : MonoBehaviour
 	{
 		public delegate void DeathCallback();
-
+		
 		public delegate void HurtCallback(int damage);
 
 		[SerializeField] private int _maxHealthPoints = 10;
