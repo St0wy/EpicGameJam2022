@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -25,6 +26,8 @@ namespace EpicGameJam
 		[SerializeField] private float distanceToAttack = 1.5f;
 		[SerializeField] private float timeToAttack = 0.5f;
 		[SerializeField] private float timeToWalkOnPlayer = 0.5f;
+		[SerializeField] private int damage = 1;
+		[SerializeField] private Health _playerHealth;
 
 		//animator
 		private Animator _peonAnim;
@@ -48,18 +51,17 @@ namespace EpicGameJam
 			if (_state is PeonState.Attacking or PeonState.ChargingAttack)
 			{
 				_velocity = Vector2.zero;
-				HandleAttack();
 				_isFollowing = false;
 			}
 			
-				Vector2 peonToTarget = playerTransform.position - transform.position;
-				float distance = peonToTarget.magnitude;
+			Vector2 peonToTarget = playerTransform.position - transform.position;
+			float distance = peonToTarget.magnitude;
 				
-				MoveToTarget(peonToTarget);
-				_velocity = Vector2.zero;
+			MoveToTarget(peonToTarget);
+			_velocity = Vector2.zero;
 				
-				if (!(distance < distanceToAttack)) return;
-				_state = PeonState.ChargingAttack;
+			if (!(distance < distanceToAttack)) return;
+			_state = PeonState.ChargingAttack;
 			
 		}
 
@@ -69,12 +71,13 @@ namespace EpicGameJam
 			_rb.velocity = _velocity;
 			_isFollowing = true;
 		}
-
-		private void HandleAttack()
+		
+		private void OnCollisionEnter2D(Collision2D other)
 		{
-			// Charge son attaque (avec le timer et tout)
-
-			// Attaque
+			if (other.gameObject.CompareTag("Player"))
+			{
+				FindObjectOfType<Health>().ReduceHealth(damage);
+			}
 		}
 	}
 }

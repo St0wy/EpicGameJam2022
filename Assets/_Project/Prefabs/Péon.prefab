@@ -172,6 +172,8 @@ MonoBehaviour:
   distanceToAttack: 1.5
   timeToAttack: 0.5
   timeToWalkOnPlayer: 0.5
+  damage: 1
+  _playerHealth: {fileID: 0}
 --- !u!114 &388641233
 MonoBehaviour:
   m_ObjectHideFlags: 0

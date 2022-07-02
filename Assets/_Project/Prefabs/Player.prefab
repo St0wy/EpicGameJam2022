@@ -362,6 +362,7 @@ GameObject:
   - component: {fileID: 1553379798}
   - component: {fileID: 1604411751}
   - component: {fileID: 1604411750}
+  - component: {fileID: -2851481490861148243}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -504,9 +505,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
   speed: 7
-  dashSpeedModifier: 2.5
-  dashDuration: 0.2
-  dashCooldownTime: 0.2
 --- !u!114 &2424408083865757907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,6 +521,7 @@ MonoBehaviour:
   swordAnimator: {fileID: 500196273330038195}
   swordRotationPoint: {fileID: 195909980}
   damage: 2
+  _isAttacking: 0
 --- !u!95 &1457539303
 Animator:
   serializedVersion: 4
@@ -531,7 +530,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1822368385227058220}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: f7568f4c1c8b33e469a828942b198344, type: 2}
   m_CullingMode: 0
@@ -611,6 +610,18 @@ MonoBehaviour:
   _maxHealthPoints: 10
   _destroyWhenKilled: 1
   _destroyTime: 0
+--- !u!114 &-2851481490861148243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822368385227058220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39ee1c9449c2ad24ca110549dc68b498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3779610501312123115
 GameObject:
   m_ObjectHideFlags: 0

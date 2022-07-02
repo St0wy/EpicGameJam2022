@@ -55,7 +55,7 @@ namespace EpicGameJam
 
 			if (!IsAlive && _destroyWhenKilled)
 			{
-				Destroy(gameObject, _destroyTime);
+				Destroy(gameObject , _destroyTime);
 			}
 		}
 	}
