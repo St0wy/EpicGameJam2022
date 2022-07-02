@@ -15,10 +15,6 @@ namespace EpicGameJam.Player
 		[Header("Parameters")]
 		[SerializeField] private float speed = 5.0f;
 
-		[SerializeField] private float dashSpeedModifier = 1.5f;
-		[SerializeField] private float dashDuration = 0.2f;
-		[SerializeField] private float dashCooldownTime = 0.07f;
-
 		private Vector2 _input;
 		private Vector2 _lookDir;
 		private Rigidbody2D _rb;
@@ -28,10 +24,7 @@ namespace EpicGameJam.Player
 		private bool _isUsingMouse;
 		private bool _isUsingRStick;
 		private bool _isMoving;
-
-		private float _dashTimer;
-		private float _dashCooldownTimer;
-		private Vector2 _dashDirection;
+		
 
 		public MovementState MovementState { get; set; }
 		public Direction Direction { get; private set; }
@@ -91,47 +84,7 @@ namespace EpicGameJam.Player
 		{
 			_isUsingMouse = (playerInput.currentControlScheme == "Keyboard&Mouse");
 		}
-
-		[UsedImplicitly]
-		private void OnDash()
-		{
-			if (MovementState is MovementState.Dash or MovementState.DashCooldown) return;
-
-			MovementState = MovementState.Dash;
-			_dashTimer = 0;
-			_dashCooldownTimer = 0;
-			_speedModifier = 0;
-			_dashDirection = Input;
-		}
-
-		private void Update()
-		{
-			switch (MovementState)
-			{
-				case MovementState.Dash:
-					_dashTimer += Time.deltaTime;
-					_speedModifier = dashSpeedModifier;
-
-					if (!(_dashTimer >= dashDuration)) return;
-
-					MovementState = MovementState.DashCooldown;
-					break;
-				case MovementState.DashCooldown:
-					_dashCooldownTimer += Time.deltaTime;
-					_speedModifier = 0;
-
-					if (!(_dashCooldownTimer >= dashCooldownTime)) return;
-
-					_speedModifier = 1;
-					MovementState = MovementState.Idle;
-					break;
-				case MovementState.Idle:
-				case MovementState.Walk:
-				default:
-					break;
-			}
-		}
-
+		
 		private void FixedUpdate()
 		{
 			ChangeLookDirection();
@@ -180,9 +133,7 @@ namespace EpicGameJam.Player
 		{
 			Vector2 input = Input;
 
-			if (MovementState == MovementState.Dash)
-				input = _dashDirection;
-
+		
 			Vector2 vel = input * (speed * _speedModifier);
 
 			switch (MovementState)
@@ -192,9 +143,7 @@ namespace EpicGameJam.Player
 					MovementState = vel.IsApproxZero() ? MovementState.Idle : MovementState.Walk;
 					break;
 				case MovementState.Attacking:
-					
-				case MovementState.Dash:
-				case MovementState.DashCooldown:
+					break;
 				default:
 					break;
 			}

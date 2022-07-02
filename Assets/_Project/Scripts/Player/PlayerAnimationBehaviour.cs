@@ -33,6 +33,7 @@ namespace EpicGameJam.Player
 			{
 				case MovementState.Idle:
 					HandleIdleNoActions();
+					
 					break;
 				case MovementState.Walk:
 					HandleMovingNoAction();

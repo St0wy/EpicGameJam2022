@@ -29,9 +29,7 @@ namespace EpicGameJam.Player
 		{
 			if (_isAttacking)
 			{
-				
 				HandleAttack();
-				
 			}
 			
 		}
@@ -51,6 +49,7 @@ namespace EpicGameJam.Player
 					health.ReduceHealth(damage);
 				}
 			}
+			
 		}
 
 		public float Attack()
@@ -63,8 +62,8 @@ namespace EpicGameJam.Player
 			// Enable hit box and sword game object
 			swordAnimator.gameObject.SetActive(true);
 			_isAttacking = true;
-			_pm.MovementState = MovementState.Attacking;
 			
+			_pm.MovementState = MovementState.Attacking;
 			float attackDuration = swordAnimator.GetCurrentAnimatorStateInfo(1).length;
 
 			StartCoroutine(StopAttackCoroutine(attackDuration));
@@ -76,12 +75,14 @@ namespace EpicGameJam.Player
 		{
 			yield return new WaitForSeconds(timeToStop);
 			StopAttack();
+			yield return new WaitForSeconds(1);
+			_pm.MovementState = MovementState.Idle;
 		}
 
 		private void StopAttack()
 		{
 			_isAttacking = false;
-			_pm.MovementState = MovementState.Dash;
+			
 		}
 
 		private void OnCollisionEnter2D(Collision2D collision)

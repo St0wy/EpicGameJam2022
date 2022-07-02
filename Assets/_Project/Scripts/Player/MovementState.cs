@@ -4,8 +4,6 @@
 	{
 		Idle = 0,
 		Walk,
-		Dash,
-		DashCooldown,
 		Attacking,
 	}
 	
