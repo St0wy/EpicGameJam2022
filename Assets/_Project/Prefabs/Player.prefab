@@ -566,6 +566,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunPivot: {fileID: 1291082227}
+  shootPoint: {fileID: 1040005137}
+  bulletPrefab: {fileID: 8427468652644573762, guid: 3b179daf2116313478d051f8129c1a33, type: 3}
 --- !u!1 &3779610501312123115
 GameObject:
   m_ObjectHideFlags: 0
