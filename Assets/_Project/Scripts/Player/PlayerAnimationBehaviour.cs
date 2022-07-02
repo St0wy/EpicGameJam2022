@@ -9,7 +9,7 @@ namespace EpicGameJam.Player
 	{
 		
 		private PlayerMovement _playerMovement;
-		[SerializeField] private Animator _animator;
+		private Animator _animator;
 
 		private string _currentAnim;
 
@@ -22,7 +22,6 @@ namespace EpicGameJam.Player
 		private void Update()
 		{
 			HandleNoAction();
-			HandleMovingNoAction();
 		}
 		
 		private void HandleMelee()
@@ -46,7 +45,6 @@ namespace EpicGameJam.Player
 			}
 		}
 
-		
 		private void HandleNoAction()
 		{
 			switch (_playerMovement.MovementState)

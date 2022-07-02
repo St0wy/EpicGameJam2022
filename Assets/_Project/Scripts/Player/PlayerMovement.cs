@@ -173,12 +173,24 @@ namespace EpicGameJam.Player
 		private void ApplyMovement()
 		{
 			Vector2 input = Input;
+
 			if (MovementState == MovementState.Dash)
-			{
 				input = _dashDirection;
-			}
 
 			Vector2 vel = input * (speed * _speedModifier);
+
+			switch (MovementState)
+			{
+				case MovementState.Idle:
+				case MovementState.Walk:
+					MovementState = vel.IsApproxZero() ? MovementState.Idle : MovementState.Walk;
+					break;
+				case MovementState.Dash:
+				case MovementState.DashCooldown:
+				default:
+					break;
+			}
+
 			_rb.velocity = vel;
 		}
 	}

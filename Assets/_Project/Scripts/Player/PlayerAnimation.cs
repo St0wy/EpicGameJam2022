@@ -21,7 +21,5 @@ namespace EpicGameJam.Player
         public static readonly string AttackLeft  = "AttackLeft";
         public static readonly string AttackRight = "AttackRight";
         public static readonly string AttackUp    = "AttackUp";
-		
-        
     }
 }
