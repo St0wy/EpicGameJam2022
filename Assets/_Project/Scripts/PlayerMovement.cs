@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
 using StowyTools.Logger;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,21 +13,37 @@ namespace EpicGameJam
 		[Header("Parameters")]
 		[SerializeField] private float speed = 5.0f;
 
+		[SerializeField] private float dashSpeedModifier = 1.5f;
+		[SerializeField] private float dashDuration = 0.2f;
+		[SerializeField] private float dashCooldownTime = 0.07f;
+
 		private Vector2 _input;
 		private Vector2 _lookDir;
 		private Rigidbody2D _rb;
 
-		[SerializeField]
+		private float _speedModifier = 1f;
+
 		private bool _isUsingMouse;
-		[SerializeField]
 		private bool _isUsingRStick;
-		[SerializeField]
 		private bool _isMoving;
+
+		private bool _isDashing;
+		private bool _isDashCooldown;
+		private float _dashTimer;
+		private float _dashCooldownTimer;
+		private Vector2 _dashDirection;
 
 		private Vector2 Input
 		{
 			get => _input;
-			set => _input = value.normalized;
+			set
+			{
+				_input = value;
+				if (_input.magnitude >= 1)
+				{
+					_input.Normalize();
+				}
+			}
 		}
 
 		private void Awake()
@@ -66,6 +83,43 @@ namespace EpicGameJam
 			_isUsingMouse = (playerInput.currentControlScheme == "Keyboard&Mouse");
 		}
 
+		[UsedImplicitly]
+		private void OnDash()
+		{
+			if (_isDashing || _isDashCooldown) return;
+
+			_isDashing = true;
+			_dashTimer = 0;
+			_dashCooldownTimer = 0;
+			_speedModifier = 0;
+			_isDashCooldown = false;
+			_dashDirection = Input;
+		}
+
+		private void Update()
+		{
+			if (_isDashing)
+			{
+				_dashTimer += Time.deltaTime;
+				_speedModifier = dashSpeedModifier;
+
+				if (!(_dashTimer >= dashDuration)) return;
+
+				_isDashCooldown = true;
+				_isDashing = false;
+			}
+			else if (_isDashCooldown)
+			{
+				_dashCooldownTimer += Time.deltaTime;
+				_speedModifier = 0;
+
+				if (!(_dashCooldownTimer >= dashCooldownTime)) return;
+
+				_speedModifier = 1;
+				_isDashCooldown = false;
+			}
+		}
+
 		private void FixedUpdate()
 		{
 			ChangeLookDirection();
@@ -92,7 +146,13 @@ namespace EpicGameJam
 
 		private void ApplyMovement()
 		{
-			Vector2 vel = Input * speed;
+			Vector2 input = Input;
+			if (_isDashing)
+			{
+				input = _dashDirection;
+			}
+
+			Vector2 vel = input * (speed * _speedModifier);
 			_rb.velocity = vel;
 		}
 	}

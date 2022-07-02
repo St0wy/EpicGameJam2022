@@ -14,7 +14,7 @@ namespace EpicGameJam
 
 		private Rigidbody2D _rb;
 		private Vector2 _movement;
-		private bool _followPlayer = false;
+		// private bool _followPlayer = false;
 
 		private void Awake()
 		{
@@ -30,7 +30,7 @@ namespace EpicGameJam
 			Vector2 vel = peonToTarget.normalized * speed;
 			_rb.velocity = vel;
 
-			_followPlayer = true;
+			// _followPlayer = true;
 		}
 	}
 }

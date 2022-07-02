@@ -237,3 +237,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
   speed: 5
+  dashSpeedModifier: 2.5
+  dashDuration: 0.2
+  dashCooldownTime: 0.2

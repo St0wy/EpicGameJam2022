@@ -10,7 +10,7 @@
                     "type": "Value",
                     "id": "5b00d4ca-6e0b-40c5-b155-2363cbe368a3",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "StickDeadzone",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -27,6 +27,15 @@
                     "name": "Fire",
                     "type": "Button",
                     "id": "b07652f9-6615-4ce3-bb79-bcd43a247bf8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "815a3eff-0719-4780-98c2-0a9ef3e43480",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -240,6 +249,28 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b6a97021-9d6b-4f25-8ac0-e5877b2936e8",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7830c774-ba47-4653-b27e-5836d9e6256a",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
