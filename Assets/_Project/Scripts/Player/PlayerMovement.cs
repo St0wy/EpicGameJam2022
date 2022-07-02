@@ -8,6 +8,9 @@ namespace EpicGameJam.Player
 	[RequireComponent(typeof(Rigidbody2D))]
 	public class PlayerMovement : MonoBehaviour
 	{
+		// Threshold value to consider the character as facing a direction
+		private const float DirectionEpsilon = 0.001f;
+
 		[SerializeField] private Camera cam;
 		[Header("Parameters")]
 		[SerializeField] private float speed = 5.0f;
@@ -143,8 +146,28 @@ namespace EpicGameJam.Player
 				_lookDir = _rb.velocity.normalized;
 			}
 
-			if (!_lookDir.IsApproxZero())
-				transform.up = _lookDir;
+			if (_lookDir.IsApproxZero()) return;
+
+			transform.up = _lookDir;
+
+			if (Mathf.Abs(_lookDir.x) > Mathf.Abs(_lookDir.y))
+			{
+				Direction = _lookDir.x switch
+				{
+					> DirectionEpsilon => Direction.Right,
+					< -DirectionEpsilon => Direction.Left,
+					_ => Direction,
+				};
+			}
+			else
+			{
+				Direction = _lookDir.y switch
+				{
+					> DirectionEpsilon => Direction.Up,
+					< -DirectionEpsilon => Direction.Down,
+					_ => Direction,
+				};
+			}
 		}
 
 		private void ApplyMovement()

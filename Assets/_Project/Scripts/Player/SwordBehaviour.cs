@@ -17,7 +17,7 @@ namespace EpicGameJam.Player
 
 		private readonly Collider2D[] _colliders = new Collider2D[15];
 
-		private void Update()
+		private void FixedUpdate()
 		{
 			if (_isAttacking)
 			{
@@ -42,17 +42,18 @@ namespace EpicGameJam.Player
 			}
 		}
 
-		public float Attack(Direction direction)
+		public float Attack()
 		{
-			float angle = DirectionUtils.GetAngle(direction);
-			swordRotationPoint.rotation = Quaternion.Euler(0, 0, angle);
+			float angle = transform.rotation.z;
+			// swordRotationPoint.rotation = Quaternion.Euler(0, 0, angle);
 
 			// Enable hit box and sword game object
 			swordAnimator.gameObject.SetActive(true);
 			_isAttacking = true;
+			// swordRotationPoint.transform.rotation = Quaternion.identity;
 
-			float attackDuration = swordAnimator.GetCurrentAnimatorStateInfo(0).length;
 			swordAnimator.Play(SwordAnimations.Attack);
+			float attackDuration = swordAnimator.GetCurrentAnimatorStateInfo(0).length;
 
 			StartCoroutine(StopAttackCoroutine(attackDuration));
 			return attackDuration;
@@ -66,8 +67,8 @@ namespace EpicGameJam.Player
 
 		private void StopAttack()
 		{
-			swordAnimator.gameObject.SetActive(false);
 			_isAttacking = false;
+			swordAnimator.gameObject.SetActive(false);
 		}
 	}
 }
