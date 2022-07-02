@@ -30,7 +30,7 @@ namespace EpicGameJam
 
 		private void DropPotion()
 		{
-			if (Random.Range(0f, 1f) <= dropChance)
+			if (Random.Range(0f, 100f) <= dropChance)
 			{
 				// Spawn potion
 				Instantiate(itemToDrop, transform.position, Quaternion.identity);
