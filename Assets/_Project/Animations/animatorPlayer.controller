@@ -267,14 +267,8 @@ AnimatorStateMachine:
     m_State: {fileID: 1440543243298180517}
     m_Position: {x: 628.45996, y: 415.47192, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 8559412684833981560}
-    m_Position: {x: 310, y: 360, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 1049428872471406703}
     m_Position: {x: 345, y: 425, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 2372861439291032053}
-    m_Position: {x: 154.77399, y: 277.2837, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -285,32 +279,6 @@ AnimatorStateMachine:
   m_ExitPosition: {x: 860, y: 100, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 3036215094800184839}
---- !u!1102 &2372861439291032053
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: AttackDown 0
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 5a8012123b52a6d4bb006874985d4a7f, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &3036215094800184839
 AnimatorState:
   serializedVersion: 6
@@ -384,32 +352,6 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: e66734ee0dad0ad42bf09044daa08e70, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &8559412684833981560
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: AttackUp 0
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ea4b4df7d8d8e3f4e85defaf6ba6f303, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
