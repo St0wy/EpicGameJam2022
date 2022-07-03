@@ -65,10 +65,10 @@ namespace EpicGameJam.Player
 				default:
 					throw new ArgumentOutOfRangeException();
 			}
-
-
+			
 			
 		}
+		
 		private void HandleMovingNoAction()
 		{
 			switch (_playerMovement.Direction)
