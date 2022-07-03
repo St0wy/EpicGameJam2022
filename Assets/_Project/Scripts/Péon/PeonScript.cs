@@ -39,6 +39,7 @@ namespace EpicGameJam
 		private PeonState _state;
 
 		private bool _isFollowing = false;
+		
 
 		private void Awake()
 		{
@@ -58,11 +59,12 @@ namespace EpicGameJam
 			float distance = peonToTarget.magnitude;
 				
 			MoveToTarget(peonToTarget);
+			
 			_velocity = Vector2.zero;
 				
 			if (!(distance < distanceToAttack)) return;
 			_state = PeonState.ChargingAttack;
-			
+
 		}
 
 		private void MoveToTarget(Vector2 dir)
@@ -70,6 +72,7 @@ namespace EpicGameJam
 			 _velocity = dir.normalized * speed;
 			_rb.velocity = _velocity;
 			_isFollowing = true;
+			_state = PeonState.WalkingToTarget;
 		}
 		
 		private void OnCollisionEnter2D(Collision2D other)
@@ -79,5 +82,6 @@ namespace EpicGameJam
 				FindObjectOfType<Health>().ReduceHealth(damage);
 			}
 		}
+		
 	}
 }
