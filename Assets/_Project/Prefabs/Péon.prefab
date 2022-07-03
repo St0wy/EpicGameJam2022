@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemToDrop: {fileID: 1392895335724329992, guid: be784017d0b53d24790cf0b292b7c288, type: 3}
-  dropChance: 30
+  dropChance: 10
 --- !u!95 &-5058895939545710441
 Animator:
   serializedVersion: 4
