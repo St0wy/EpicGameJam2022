@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 3243615797183640466}
   - component: {fileID: 388641233}
   - component: {fileID: 388641234}
+  - component: {fileID: -5058895939545710441}
+  - component: {fileID: 3716680383484986668}
   m_Layer: 0
   m_Name: "P\xE9on"
   m_TagString: Peon
@@ -45,14 +47,14 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4331149886504611821}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Offset: {x: -0.21286398, y: -0.22989315}
+  m_Size: {x: 0.6986731, y: 1.3235532}
   m_Direction: 0
 --- !u!50 &7010380461985949335
 Rigidbody2D:
@@ -82,7 +84,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4331149886504611821}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -92,7 +94,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 4.7999997, y: 2.6999998}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -142,8 +144,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.12565756, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4c08d0b089cee6440a03f0b64b522043, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -203,3 +205,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemToDrop: {fileID: 1392895335724329992, guid: be784017d0b53d24790cf0b292b7c288, type: 3}
   dropChance: 30
+--- !u!95 &-5058895939545710441
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4331149886504611821}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8fde099d031e29b4baefb99f84ebf48a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3716680383484986668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4331149886504611821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1b444787b9c1144ac37e9fb9a778c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _peonAnim: {fileID: 0}
