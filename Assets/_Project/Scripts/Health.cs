@@ -57,11 +57,10 @@ namespace EpicGameJam
 			if (!IsAlive && _destroyWhenKilled)
 			{
 				Destroy(gameObject , _destroyTime);
-				ReturnToMainMenu();
 			}
 		}
 
-		private void ReturnToMainMenu()
+		public void ReturnToMainMenu()
 		{
 			SceneManager.LoadScene("MainMenu");
 		}

@@ -182,6 +182,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1410436331}
+    - target: {fileID: 2450557857473433047, guid: 96b76e768f4f1e0489037a53dee4d2c7, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96b76e768f4f1e0489037a53dee4d2c7, type: 3}
 --- !u!114 &122217761 stripped
@@ -254,6 +258,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 216264552434382699, guid: d57e5380672b093498739ed66bf155e8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2425997973258105602, guid: d57e5380672b093498739ed66bf155e8, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3243615797183640466, guid: d57e5380672b093498739ed66bf155e8, type: 3}

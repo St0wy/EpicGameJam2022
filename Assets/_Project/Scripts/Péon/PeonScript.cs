@@ -39,10 +39,12 @@ namespace EpicGameJam
 		private PeonState _state;
 
 		private bool _isFollowing = false;
-		
+		private Health _health;
+
 
 		private void Awake()
 		{
+			_health = FindObjectOfType<Health>();
 			_rb = GetComponent<Rigidbody2D>();
 			_peonAnim = GetComponent<Animator>();
 		}
@@ -64,7 +66,7 @@ namespace EpicGameJam
 				
 			if (!(distance < distanceToAttack)) return;
 			_state = PeonState.ChargingAttack;
-
+			ReturnMainMenuForPlayer();
 		}
 
 		private void MoveToTarget(Vector2 dir)
@@ -79,9 +81,16 @@ namespace EpicGameJam
 		{
 			if (other.gameObject.CompareTag("Player"))
 			{
-				FindObjectOfType<Health>().ReduceHealth(damage);
+				_health.ReduceHealth(damage);
 			}
 		}
-		
+
+		private void ReturnMainMenuForPlayer()
+		{
+			if (!_playerHealth.IsAlive)
+			{
+				_health.ReturnToMainMenu();
+			}
+		}
 	}
 }
