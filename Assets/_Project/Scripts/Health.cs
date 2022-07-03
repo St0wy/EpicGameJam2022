@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace EpicGameJam
 {
@@ -56,7 +57,13 @@ namespace EpicGameJam
 			if (!IsAlive && _destroyWhenKilled)
 			{
 				Destroy(gameObject , _destroyTime);
+				ReturnToMainMenu();
 			}
+		}
+
+		private void ReturnToMainMenu()
+		{
+			SceneManager.LoadScene("MainMenu");
 		}
 	}
 }
